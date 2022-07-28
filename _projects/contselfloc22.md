@@ -17,7 +17,7 @@ category: publications
             <picture>
                 <img  src="/assets/img/contselfloc22-demo.gif"  title="demo video" />
             </picture>
-            <figcaption class="caption"><font size="1"> Maps data: Google ©2022 GeoBasis-DE/BKG (©2009)</font></figcaption>
+            <figcaption class="caption"><font size="1"> Maps data: Google ©2022 Stadt Karlsruhe VLW, GeoBasis-DE/BKG (©2009)</font></figcaption>
         </figure>
     </div>
 </div>
