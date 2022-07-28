@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2015-10-22 15:59:00-0400
+date: 2021-11-16
 inline: true
 ---
 
-A simple inline announcement.
+Our paper *Improving Semantic Image Segmentation via Label Fusion in Semantically Textured Meshes* got accepted at VISAPP 2022.
