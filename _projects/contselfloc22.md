@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Continuous Self-Localization on Aerial Images Using Visual and Lidar Sensors
-description: IROS 2022
+description: Accepted at IROS 2022
 img: assets/img/contselfloc22-preview.jpg
 # importance: 1
 category: publications
