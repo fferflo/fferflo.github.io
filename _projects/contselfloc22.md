@@ -15,7 +15,7 @@ category: publications
 
 <div class="row justify-content-sm-center">
     <div class="col-md-auto">
-      <figure>
+        <figure>
             <picture>
                 <img  src="/assets/img/contselfloc22-demo.gif"  title="demo video" />
             </picture>
