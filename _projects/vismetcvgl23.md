@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Uncertainty-aware Vision-based Metric Cross-view Geolocalization
-description: Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>Submitted at TODO
+description: Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>
 img: assets/img/vismetcvgl23-preview.jpg
 # importance: 1
 category: publications
 ---
 
-<a href="TODO" class="btn btn-sm z-depth-1" role="button">Paper</a>
+<a href="https://arxiv.org/abs/2211.12145" class="btn btn-sm z-depth-1" role="button">Paper</a>
 
 
 *tl;dr Perform metric self-localization by matching a vehicle's camera readings against aerial imagery.*
@@ -93,5 +93,16 @@ We use a Kalman tracking framework to filter the uncertainty-aware predictions o
 ---
 
 {% raw %}
-TODO
+```
+@misc{fervers2023vmcvgl,
+  doi = {10.48550/ARXIV.2211.12145},
+  url = {https://arxiv.org/abs/2211.12145},
+  author = {Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
+  keywords = {Computer Vision and Pattern Recognition (cs.CV), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {Uncertainty-aware Vision-based Metric Cross-view Geolocalization},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
 {% endraw %}
