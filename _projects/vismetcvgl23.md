@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Uncertainty-aware Vision-based Metric Cross-view Geolocalization
-description: Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>
+description: Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>Accepted at CVPR 2023
 img: assets/img/vismetcvgl23-preview.jpg
 # importance: 1
 category: publications
 ---
 
-<a href="https://arxiv.org/abs/2211.12145" class="btn btn-sm z-depth-1" role="button">Paper</a>
+<a href="https://arxiv.org/abs/2211.12145" class="btn btn-sm z-depth-1" role="button">Paper</a> <i> (Code will be published during CVPR in June 2023)
 
 
 *tl;dr Perform metric self-localization by matching a vehicle's camera readings against aerial imagery.*
