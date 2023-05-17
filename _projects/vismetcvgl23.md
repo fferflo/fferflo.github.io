@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Uncertainty-aware Vision-based Metric Cross-view Geolocalization
-description: Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>Accepted at CVPR 2023
+description: Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>CVPR 2023
 img: assets/img/vismetcvgl23-preview.jpg
 # importance: 1
 category: publications
@@ -94,15 +94,13 @@ We use a Kalman tracking framework to filter the uncertainty-aware predictions o
 
 {% raw %}
 ```
-@misc{fervers2023vmcvgl,
-  doi = {10.48550/ARXIV.2211.12145},
-  url = {https://arxiv.org/abs/2211.12145},
-  author = {Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
-  keywords = {Computer Vision and Pattern Recognition (cs.CV), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  title = {Uncertainty-aware Vision-based Metric Cross-view Geolocalization},
-  publisher = {arXiv},
-  year = {2022},
-  copyright = {arXiv.org perpetual, non-exclusive license}
+@InProceedings{Fervers_2023_CVPR,
+    author    = {Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
+    title     = {Uncertainty-Aware Vision-Based Metric Cross-View Geolocalization},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {21621-21631}
 }
 ```
 {% endraw %}

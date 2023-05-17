@@ -64,15 +64,13 @@ We achieve state-of-the-art results on both the KITTI and KITTI-360 datasets. Th
 
 {% raw %}
 ```
-@misc{fervers2022continuous,
-  doi = {10.48550/ARXIV.2203.03334},
-  url = {https://arxiv.org/abs/2203.03334},
-  author = {Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
-  keywords = {Computer Vision and Pattern Recognition (cs.CV), Robotics (cs.RO), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  title = {Continuous Self-Localization on Aerial Images Using Visual and Lidar Sensors},
-  publisher = {arXiv},
-  year = {2022},
-  copyright = {arXiv.org perpetual, non-exclusive license},
+@inproceedings{fervers2022continuous,
+  title={Continuous self-localization on aerial images using visual and lidar sensors},
+  author={Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
+  booktitle={2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={7028--7035},
+  year={2022},
+  organization={IEEE}
 }
 ```
 {% endraw %}
