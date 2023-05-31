@@ -7,7 +7,7 @@ img: assets/img/vismetcvgl23-preview.jpg
 category: publications
 ---
 
-<a href="https://arxiv.org/abs/2211.12145" class="btn btn-sm z-depth-1" role="button">Paper</a> <i> (Code will be published during CVPR in June 2023)
+<a href="https://arxiv.org/abs/2211.12145" class="btn btn-sm z-depth-0" role="button">arXiv</a> <a href="https://www.youtube.com/watch?v=1vHFiA0prL0" class="btn btn-sm z-depth-0" role="button">Video</a> <i> (Code will be published during CVPR in June 2023)
 
 
 *tl;dr Perform metric self-localization by matching a vehicle's camera readings against aerial imagery.*
