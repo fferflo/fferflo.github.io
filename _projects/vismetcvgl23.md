@@ -7,7 +7,7 @@ img: assets/img/vismetcvgl23-preview.jpg
 category: publications
 ---
 
-<a href="https://arxiv.org/abs/2211.12145" class="btn btn-sm z-depth-0" role="button">arXiv</a> <a href="https://www.youtube.com/watch?v=1vHFiA0prL0" class="btn btn-sm z-depth-0" role="button">Video</a> <i> (Code will be published during CVPR in June 2023)
+<a href="https://arxiv.org/abs/2211.12145" class="btn btn-sm z-depth-0" role="button">arXiv</a> <a href="https://www.youtube.com/watch?v=1vHFiA0prL0" class="btn btn-sm z-depth-0" role="button">Video</a> <a href="/projects/vismetcvgl23/#code" class="btn btn-sm z-depth-0" role="button">Code</a>
 
 
 *tl;dr Perform metric self-localization by matching a vehicle's camera readings against aerial imagery.*
@@ -27,6 +27,15 @@ This paper proposes a novel method for vision-based metric cross-view geolocaliz
 We present an end-to-end differentiable model that uses the ground and aerial images to predict a probability distribution over possible vehicle poses. We combine multiple vehicle datasets with aerial images from orthophoto providers on which we demonstrate the feasibility of our method. Since the ground truth poses are often inaccurate w.r.t. the aerial images, we implement a pseudo-label approach to produce more accurate ground truth poses and make them publicly available.
 
 While previous works require training data from the target region to achieve reasonable localization accuracy (i.e. same-area evaluation), our approach overcomes this limitation and outperforms previous results even in the strictly more challenging cross-area case. We improve the previous state-of-the-art by a large margin even without ground or aerial data from the test region, which highlights the model's potential for global-scale application. We further integrate the uncertainty-aware predictions in a tracking framework to determine the vehicle's trajectory over time resulting in a mean position error on KITTI-360 of 0.78m.
+
+### Code
+---
+
+We publish our code as separate packages:
+
+- [tiledwebmaps](https://github.com/fferflo/tiledwebmaps): Package for fetching aerial images from tiled web maps.
+- [cvgl_data](https://github.com/fferflo/cvgl_data): Common interface to all datasets used in the paper. Includes pseudo-labelled ground-truth.
+- Training code: Coming soon...
 
 ### Method
 ---
