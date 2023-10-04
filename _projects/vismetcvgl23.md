@@ -31,11 +31,10 @@ While previous works require training data from the target region to achieve rea
 ### Code
 ---
 
-The original code used for our paper can be found in the [supplementary material](https://openaccess.thecvf.com/content/CVPR2023/html/Fervers_Uncertainty-Aware_Vision-Based_Metric_Cross-View_Geolocalization_CVPR_2023_paper.html). We have since reworked the codebase to make it more accessible and easier to use. The code can be found in the following repositories:
+The original code used for our paper can be found in the [supplementary material](https://openaccess.thecvf.com/content/CVPR2023/html/Fervers_Uncertainty-Aware_Vision-Based_Metric_Cross-View_Geolocalization_CVPR_2023_paper.html). We have since reworked some of the codebase to make it more accessible and easier to use. The code can be found in the following repositories:
 
 - [tiledwebmaps](https://github.com/fferflo/tiledwebmaps): Package for fetching aerial images from tiled web maps.
 - [cvgl_data](https://github.com/fferflo/cvgl_data): Common interface to all datasets used in the paper. Includes pseudo-labelled ground-truth.
-- Training code: Coming soon...
 
 ### Method
 ---
