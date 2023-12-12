@@ -41,6 +41,46 @@ layout: default
             <!-- Selected papers -->
             {%- include selected_papers.html %}
           {%- endif %}
+
+          <div class="publications">
+            <h2>Libraries</h2>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h5><b><a href="https://github.com/fferflo/einx">einx</a></b></h5>
+                Tensor Operations in Einstein-Inspired Notation for Python.
+              </div>
+              <div class="col-md-9">
+                <figure>
+                  {% include figure.html path="assets/img/einx.png" class="img-fluid rounded" %}
+                </figure>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h5><b><a href="https://github.com/fferflo/semantic-meshes">Semantic Meshes</a></b></h5>
+                Framework for annotating 3D meshes using the predictions of a 2D semantic segmentation model.
+              </div>
+              <div class="col-md-5">
+                <figure>
+                  {% include figure.html path="assets/img/semantic-meshes2.jpg" class="img-fluid rounded" %}
+                </figure>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <h5><b><a href="https://github.com/fferflo/tinylogdir">tinylogdir</a></b></h5>
+                Lightweight library for creating logging directories in python scripts.
+              </div>
+              <div class="col-md-9">
+                <figure>
+                  {% include figure.html path="assets/img/tinylogdir.png" class="img-fluid rounded" %}
+                </figure>
+              </div>
+            </div>
+
           {%- if page.social %}
           <!-- Social -->
           <div class="social">
