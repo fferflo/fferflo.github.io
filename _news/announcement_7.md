@@ -4,4 +4,4 @@ date: 2024-07-01
 inline: true
 ---
 
-Our work *Statewide Visual Geolocalization in the Wild* has been accepted at ECCV 2024.
+Our work <i><a href="#eccv24">Statewide Visual Geolocalization in the Wild</a></i> has been accepted at <strong>ECCV 2024</strong>.
