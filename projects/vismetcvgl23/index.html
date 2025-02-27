@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Florian Fervers | Uncertainty-aware Vision-based Metric Cross-view Geolocalization</title>
+    <meta name="author" content="Florian  Fervers" />
+    <meta name="description" content="Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>CVPR 2023" />
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="none" id="highlight_theme_light" />
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://fferflo.github.io/projects/vismetcvgl23/">
+    
+    <!-- Dark Mode -->
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class=" ">
+
+    <!-- Header -->
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- page.html -->
+        <div class="post">
+
+          <header class="post-header">
+            <h1 class="post-title">Uncertainty-aware Vision-based Metric Cross-view Geolocalization</h1>
+            <p class="post-description">Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>CVPR 2023</p>
+          </header>
+
+          <article>
+            <p><a href="https://arxiv.org/abs/2211.12145" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">arXiv</a> <a href="https://www.youtube.com/watch?v=1vHFiA0prL0" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">Video</a> <a href="/projects/vismetcvgl23/#code" class="btn btn-sm z-depth-0" role="button">Code</a></p>
+
+<p><em>tl;dr Perform metric self-localization by matching a vehicle’s camera readings against aerial imagery.</em></p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-12 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/vismetcvgl23-title-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/vismetcvgl23-title-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/vismetcvgl23-title-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/vismetcvgl23-title.jpg" title="title image">
+
+  </picture>
+
+</figure>
+
+        <figcaption class="caption">Probability distributions for the vehicle position predicted by our model which matches the vehicle's surround camera images with an aerial image. The first and second rows show the front and back cameras in the Ford AV dataset. The last row shows the aerial image with the search region in the center and driving direction pointing upwards. Blue and red color refer to low and high probability predicted by our model. Map data: Bing Maps © 2022 TomTom, © Vexcel Imaging.</figcaption>
+    </div>
+</div>
+
+<h3 id="abstract">Abstract</h3>
+<hr>
+
+<p>This paper proposes a novel method for vision-based metric cross-view geolocalization (CVGL) that matches the camera images captured from a ground-based vehicle with an aerial image to determine the vehicle’s geo-pose. Since aerial images are globally available at low cost, they represent a potential compromise between two established paradigms of autonomous driving, i.e. using expensive high-definition prior maps or relying entirely on the sensor data captured at runtime.</p>
+
+<p>We present an end-to-end differentiable model that uses the ground and aerial images to predict a probability distribution over possible vehicle poses. We combine multiple vehicle datasets with aerial images from orthophoto providers on which we demonstrate the feasibility of our method. Since the ground truth poses are often inaccurate w.r.t. the aerial images, we implement a pseudo-label approach to produce more accurate ground truth poses and make them publicly available.</p>
+
+<p>While previous works require training data from the target region to achieve reasonable localization accuracy (i.e. same-area evaluation), our approach overcomes this limitation and outperforms previous results even in the strictly more challenging cross-area case. We improve the previous state-of-the-art by a large margin even without ground or aerial data from the test region, which highlights the model’s potential for global-scale application. We further integrate the uncertainty-aware predictions in a tracking framework to determine the vehicle’s trajectory over time resulting in a mean position error on KITTI-360 of 0.78m.</p>
+
+<h3 id="code">Code</h3>
+<hr>
+
+<p>The original code used for our paper can be found in the <a href="https://openaccess.thecvf.com/content/CVPR2023/html/Fervers_Uncertainty-Aware_Vision-Based_Metric_Cross-View_Geolocalization_CVPR_2023_paper.html" target="_blank" rel="noopener noreferrer">supplementary material</a>. We have since reworked some of the codebase to make it more accessible and easier to use. The code can be found in the following repositories:</p>
+
+<ul>
+  <li>
+<a href="https://github.com/fferflo/tiledwebmaps" target="_blank" rel="noopener noreferrer">tiledwebmaps</a>: Package for fetching aerial images from tiled web maps.</li>
+  <li>
+<a href="https://github.com/fferflo/cvgl_data" target="_blank" rel="noopener noreferrer">cvgl_data</a>: Common interface to all datasets used in the paper. Includes pseudo-labelled ground-truth.</li>
+</ul>
+
+<h3 id="method">Method</h3>
+<hr>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-7 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/vismetcvgl23-summary-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/vismetcvgl23-summary-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/vismetcvgl23-summary-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/vismetcvgl23-summary.png" title="Summary">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<h3 id="dataset">Dataset</h3>
+<hr>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-12 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/vismetcvgl23-datasets-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/vismetcvgl23-datasets-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/vismetcvgl23-datasets-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/vismetcvgl23-datasets.png" title="Summary">
+
+  </picture>
+
+</figure>
+
+        <figcaption class="caption">SD: Average scene duration. Data-frames are divided into disjoint cells with size 100m x 100m to measure aerial coverage.</figcaption>
+    </div>
+</div>
+
+<p>We collect data from seven different datasets over nine regions to train and test our method. The large amount of data allows evaluating in a cross-area setting, i.e. with disjoint train and test regions. Ford AV and KITTI-360 contain scenes that are significantly longer than the other datasets and are therefore most suited for evaluating tracking frameworks.</p>
+
+<p>In addition to aerial images from DCGIS, MassGIS and Stratmap (which are taken between 2017 and 2021) we collect aerial images from Google Maps and Bing Maps during 2022. These images might be several years old since the recording date is not provided.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-12 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/vismetcvgl23-datapreprocessing-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/vismetcvgl23-datapreprocessing-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/vismetcvgl23-datapreprocessing-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/vismetcvgl23-datapreprocessing.png" title="Summary">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<p>Since the vehicle’s geo-locations do not always accurately match the corresponding aerial images, we compute new geo-registered ground truth poses for all datasets used in the work (Fig. 4) and filter out invalid samples via an automated data-pruning approach (Fig. 5).</p>
+
+<h3 id="results">Results</h3>
+<hr>
+
+<p>Our model outperforms previous approaches on the Ford AV dataset following the evaluation protocol of Shi et al. (CVPR2022), even under the strictly more challenging cross-area and cross-vehicle settings - which highlights the potential for global-scale application without fine-tuning on a new region or a new vehicle setup.</p>
+
+<div class="row justify-content-sm-center">
+    <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/vismetcvgl23-results-fordav-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/vismetcvgl23-results-fordav-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/vismetcvgl23-results-fordav-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/vismetcvgl23-results-fordav.png" title="Results">
+
+  </picture>
+
+</figure>
+
+</div>
+
+<p>We additionally train our model without using information from the vehicle cameras, i.e. by setting all RGB values to zero. In this setting, the model learns a prior distribution of vehicle poses w.r.t. the aerial image since the BEV map is constant over different inputs. The model shows a performance similar to the previous state-of-the-art HighlyAccurate [35] for longitudinal recall indicating that their model might rely mainly on prior poses w.r.t. the aerial image rather than on cross-view matching. Fig. 6 shows a visualization of the features learned by the model in this setting.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-7 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/vismetcvgl23-results-featurevis-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/vismetcvgl23-results-featurevis-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/vismetcvgl23-results-featurevis-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/vismetcvgl23-results-featurevis.png" title="Aerial-only feature visualization">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<p>We use a Kalman tracking framework to filter the uncertainty-aware predictions of the model and inertial measurements over time. In this setting, we outperform a recent lidar-visual metric CVGL method on KITTI-360 and achieve sub-meter accurate poses. We include two videos of the tracking framework applied to scenes in the Ford AV and KITTI-360 datasets below.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        <iframe width="384" height="582" src="https://www.youtube.com/embed/JAo3Dh8wLcE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+    <div class="col-sm-6 mt-3 mt-md-0">
+        <iframe width="384" height="486" src="https://www.youtube.com/embed/yTR3Wlu6Hdc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+</div>
+
+<p><br></p>
+
+<h3 id="citation">Citation</h3>
+<hr>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@InProceedings{Fervers_2023_CVPR,
+    author    = {Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
+    title     = {Uncertainty-Aware Vision-Based Metric Cross-View Geolocalization},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {21621-21631}
+}
+</code></pre></div></div>
+
+
+          </article>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2025 Florian  Fervers. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
+
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" integrity="sha256-l/1pMF/+J4TThfgARS6KwWrk/egwuVvhRzfLAMQ6Ds4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha256-SyTu6CwrfOhaznYZPoolVw2rxoY7lKYKQvqbtqN93HI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script src="/assets/js/common.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+  </body>
+</html>
+

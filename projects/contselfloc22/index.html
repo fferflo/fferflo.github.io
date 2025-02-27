@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Florian Fervers | Continuous Self-Localization on Aerial Images Using Visual and Lidar Sensors</title>
+    <meta name="author" content="Florian  Fervers" />
+    <meta name="description" content="Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>IROS22" />
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="none" id="highlight_theme_light" />
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://fferflo.github.io/projects/contselfloc22/">
+    
+    <!-- Dark Mode -->
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class=" ">
+
+    <!-- Header -->
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- page.html -->
+        <div class="post">
+
+          <header class="post-header">
+            <h1 class="post-title">Continuous Self-Localization on Aerial Images Using Visual and Lidar Sensors</h1>
+            <p class="post-description">Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen<br>IROS22</p>
+          </header>
+
+          <article>
+            <p><a href="https://arxiv.org/abs/2203.03334" class="btn btn-sm z-depth-1" role="button" target="_blank" rel="noopener noreferrer">Paper</a>
+<a href="https://www.youtube.com/watch?v=4H-d2gHNcm0" class="btn btn-sm z-depth-1" role="button" target="_blank" rel="noopener noreferrer">Video</a></p>
+
+<p><em>tl;dr Perform metric self-localization by matching a vehicle’s lidar and camera readings against aerial imagery.</em></p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-md-auto">
+        <figure>
+            <picture>
+                <img src="/assets/img/contselfloc22-demo.gif" title="demo video">
+            </picture>
+            <figcaption class="caption"><font size="1"> Maps data: Google ©2022 Stadt Karlsruhe VLW, GeoBasis-DE/BKG (©2009)</font></figcaption>
+        </figure>
+    </div>
+</div>
+
+<h3 id="abstract">Abstract</h3>
+<hr>
+
+<p>This paper proposes a novel method for geo-tracking, i.e. continuous metric self-localization in outdoor environments by registering a vehicle’s sensor information with aerial imagery of an unseen target region. Geo-tracking methods offer the potential to supplant noisy signals from global navigation satellite systems (GNSS) and expensive and hard to maintain prior maps that are typically used for this purpose. The proposed geo-tracking method aligns data from on-board cameras and lidar sensors with geo-registered orthophotos to continuously localize a vehicle. We train a model in a metric learning setting to extract visual features from ground and aerial images. The ground features are projected into a top-down perspective via the lidar points and are matched with the aerial features to determine the relative pose between vehicle and orthophoto.</p>
+
+<p>Our method is the first to utilize on-board cameras in an end-to-end differentiable model for metric self-localization on unseen orthophotos. It exhibits strong generalization, is robust to changes in the environment and requires only geo-poses as ground truth. We evaluate our approach on the KITTI-360 dataset and achieve a mean absolute position error (APE) of 0.94m. We further compare with previous approaches on the KITTI odometry dataset and achieve state-of-the-art results on the geo-tracking task.</p>
+
+<h3 id="method">Method</h3>
+<hr>
+
+<h5 id="1-alignment">1. Alignment</h5>
+
+<div class="row justify-content-sm-center">
+    <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/contselfloc22-summary-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/contselfloc22-summary-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/contselfloc22-summary-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/contselfloc22-summary.jpg" title="Summary">
+
+  </picture>
+
+</figure>
+
+</div>
+
+<h5 id="2-tracking">2. Tracking</h5>
+
+<p>We choose a simple tracking method based on an Extended Kalman Filter (EKF) with the constant turn-rate and acceleration (CTRA) motion model that continuously integrates measurements of an inertial measurement unit (IMU). The EKF keeps track of the current vehicle state and corresponding state uncertainty. To demonstrate the effectiveness of our registration, we use only the turn-rate and acceleration of the IMU which on its own results in large long-term drift. The acceleration term is integrated twice to produce position values, such that small acceleration noise leads to large translational noise over time. We use our registration method to continuously align the trajectory with aerial images such that the drift is reduced to within the registration error of the method.</p>
+
+<h3 id="results">Results</h3>
+<hr>
+
+<p>We achieve state-of-the-art results on both the KITTI and KITTI-360 datasets. The KITTI dataset contains only a single front-facing camera and can thus not leverage the full potential of our method. We still evaluate on KITTI since it is the dataset that most related works reported on. We achieve better results than other approaches, but our method fails to track two scenes due to the limited field-of-view. KITTI-360 includes a front-facing camera and two side-facing cameras and is captured over different trajectories than KITTI. Here, we successfully track all scenes and achieve sub-meter accuracy.</p>
+
+<div class="row justify-content-sm-center">
+    <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/contselfloc22-results-quantitative-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/contselfloc22-results-quantitative-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/contselfloc22-results-quantitative-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/contselfloc22-results-quantitative.jpg" title="Results">
+
+  </picture>
+
+</figure>
+
+</div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-7 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="/assets/img/contselfloc22-results-qualitative-480.webp"></source>
+    <source media="(max-width: 800px)" srcset="/assets/img/contselfloc22-results-qualitative-800.webp"></source>
+    <source media="(max-width: 1400px)" srcset="/assets/img/contselfloc22-results-qualitative-1400.webp"></source>
+    <!-- Fallback to the original file -->
+    <img class="img-fluid" src="/assets/img/contselfloc22-results-qualitative.jpg" title="Results">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<h3 id="citation">Citation</h3>
+<hr>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{fervers2022continuous,
+  title={Continuous self-localization on aerial images using visual and lidar sensors},
+  author={Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
+  booktitle={2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={7028--7035},
+  year={2022},
+  organization={IEEE}
+}
+</code></pre></div></div>
+
+
+          </article>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2025 Florian  Fervers. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
+
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" integrity="sha256-l/1pMF/+J4TThfgARS6KwWrk/egwuVvhRzfLAMQ6Ds4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha256-SyTu6CwrfOhaznYZPoolVw2rxoY7lKYKQvqbtqN93HI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script src="/assets/js/common.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+  </body>
+</html>
+
