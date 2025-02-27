@@ -7,8 +7,8 @@
               {%- assign news = site.news | reverse -%}
               {% for item in news limit: site.news_limit %}
                 <tr>
-                  <th scope="row">{{ item.date | date: "%b %-d, %Y" }}</th>
-                  <td>
+                  <th scope="row" style="white-space:nowrap; padding-top: 0.05em; padding-bottom: 0.2em; text-align: right;">{{ item.date | date: "%b %-d, %Y" }}</th>
+                  <td style="padding-top: 0; padding-bottom: 0.2em;">
                     {% if item.inline -%}
                       {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
                     {%- else -%}
