@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Florian Fervers | Uncertainty-aware Vision-based Metric Cross-view Geolocalization</title>
+    <meta name="author" content="Florian Fervers" />
+    <meta name="description" content="Uncertainty-aware Vision-based Metric Cross-view Geolocalization. Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen. CVPR 2023." />
+    <link rel="canonical" href="https://fferflo.github.io/projects/vismetcvgl23/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>" />
+    <link rel="stylesheet" href="../../assets/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="side side--project">
+<a class="back" href="../../">← Home</a>
+<nav class="toc" aria-label="On this page">
+<a href="#abstract">Abstract</a>
+<a href="#code">Code</a>
+<a href="#method">Method</a>
+<a href="#dataset">Dataset</a>
+<a href="#results">Results</a>
+<a href="#citation">Citation</a>
+</nav>
+<nav class="social" aria-label="Elsewhere">
+<a href="mailto:%66%6C%6F%72%69%61%6E.%66%65%72%76%65%72%73@%69%6F%73%62.%66%72%61%75%6E%68%6F%66%65%72.%64%65" title="Email" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+<a href="https://scholar.google.com/citations?user=b3F_txgAAAAJ" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
+<a href="https://github.com/fferflo" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+<a href="https://www.linkedin.com/in/florian-fervers-754a9027b" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+</nav>
+<p class="copy">© 2026 Florian Fervers</p>
+</aside>
+<main class="content" id="main">
+<h1 class="ptitle">Uncertainty-aware Vision-based Metric Cross-view Geolocalization</h1>
+<p class="byline">Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen</p>
+<p class="pvenue">CVPR 2023</p>
+<article><p class="btns"><a class="btn" href="https://arxiv.org/abs/2211.12145" target="_blank" rel="noopener noreferrer">arXiv</a><a class="btn" href="https://www.youtube.com/watch?v=1vHFiA0prL0" target="_blank" rel="noopener noreferrer">Video</a><a class="btn" href="#code">Code</a></p>
+<p class="tldr"><em>tl;dr Perform metric self-localization by matching a vehicle’s camera readings against aerial imagery.</em></p>
+<figure class="fig"><img src="../../assets/img/vismetcvgl23-title.webp" width="1348" height="689" alt="Predicted probability distributions for the vehicle position" loading="lazy"><figcaption>Probability distributions for the vehicle position predicted by our model which matches the vehicle's surround camera images with an aerial image. The first and second rows show the front and back cameras in the Ford AV dataset. The last row shows the aerial image with the search region in the center and driving direction pointing upwards. Blue and red color refer to low and high probability predicted by our model. Map data: Bing Maps © 2022 TomTom, © Vexcel Imaging.</figcaption></figure>
+<h2 id="abstract">Abstract</h2>
+<p>This paper proposes a novel method for vision-based metric cross-view geolocalization (CVGL) that matches the camera images captured from a ground-based vehicle with an aerial image to determine the vehicle’s geo-pose. Since aerial images are globally available at low cost, they represent a potential compromise between two established paradigms of autonomous driving, i.e. using expensive high-definition prior maps or relying entirely on the sensor data captured at runtime.</p>
+<p>We present an end-to-end differentiable model that uses the ground and aerial images to predict a probability distribution over possible vehicle poses. We combine multiple vehicle datasets with aerial images from orthophoto providers on which we demonstrate the feasibility of our method. Since the ground truth poses are often inaccurate w.r.t. the aerial images, we implement a pseudo-label approach to produce more accurate ground truth poses and make them publicly available.</p>
+<p>While previous works require training data from the target region to achieve reasonable localization accuracy (i.e. same-area evaluation), our approach overcomes this limitation and outperforms previous results even in the strictly more challenging cross-area case. We improve the previous state-of-the-art by a large margin even without ground or aerial data from the test region, which highlights the model’s potential for global-scale application. We further integrate the uncertainty-aware predictions in a tracking framework to determine the vehicle’s trajectory over time resulting in a mean position error on KITTI-360 of 0.78m.</p>
+<h2 id="code">Code</h2>
+<p>The original code used for our paper can be found in the <a href="https://openaccess.thecvf.com/content/CVPR2023/html/Fervers_Uncertainty-Aware_Vision-Based_Metric_Cross-View_Geolocalization_CVPR_2023_paper.html" target="_blank" rel="noopener noreferrer">supplementary material</a>. We have since reworked some of the codebase to make it more accessible and easier to use. The code can be found in the following repositories:</p>
+<ul><li><a href="https://github.com/fferflo/tiledwebmaps" target="_blank" rel="noopener noreferrer">tiledwebmaps</a>: Package for fetching aerial images from tiled web maps.</li><li><a href="https://github.com/fferflo/cvgl_data" target="_blank" rel="noopener noreferrer">cvgl_data</a>: Common interface to all datasets used in the paper. Includes pseudo-labelled ground-truth.</li></ul>
+<h2 id="method">Method</h2>
+<figure class="fig narrow"><img src="../../assets/img/vismetcvgl23-summary.webp" width="668" height="770" alt="Method summary" loading="lazy"></figure>
+<h2 id="dataset">Dataset</h2>
+<figure class="fig"><img src="../../assets/img/vismetcvgl23-datasets.webp" width="1400" height="511" alt="Overview of the datasets used" loading="lazy"><figcaption>SD: Average scene duration. Data-frames are divided into disjoint cells with size 100m x 100m to measure aerial coverage.</figcaption></figure>
+<p>We collect data from seven different datasets over nine regions to train and test our method. The large amount of data allows evaluating in a cross-area setting, i.e. with disjoint train and test regions. Ford AV and KITTI-360 contain scenes that are significantly longer than the other datasets and are therefore most suited for evaluating tracking frameworks.</p>
+<p>In addition to aerial images from DCGIS, MassGIS and Stratmap (which are taken between 2017 and 2021) we collect aerial images from Google Maps and Bing Maps during 2022. These images might be several years old since the recording date is not provided.</p>
+<figure class="fig"><img src="../../assets/img/vismetcvgl23-datapreprocessing.webp" width="1400" height="618" alt="Data preprocessing" loading="lazy"></figure>
+<p>Since the vehicle’s geo-locations do not always accurately match the corresponding aerial images, we compute new geo-registered ground truth poses for all datasets used in the work (Fig. 4) and filter out invalid samples via an automated data-pruning approach (Fig. 5).</p>
+<h2 id="results">Results</h2>
+<p>Our model outperforms previous approaches on the Ford AV dataset following the evaluation protocol of Shi et al. (CVPR2022), even under the strictly more challenging cross-area and cross-vehicle settings - which highlights the potential for global-scale application without fine-tuning on a new region or a new vehicle setup.</p>
+<figure class="fig"><img src="../../assets/img/vismetcvgl23-results-fordav.webp" width="1400" height="514" alt="Results on the Ford AV dataset" loading="lazy"></figure>
+<p>We additionally train our model without using information from the vehicle cameras, i.e. by setting all RGB values to zero. In this setting, the model learns a prior distribution of vehicle poses w.r.t. the aerial image since the BEV map is constant over different inputs. The model shows a performance similar to the previous state-of-the-art HighlyAccurate [35] for longitudinal recall indicating that their model might rely mainly on prior poses w.r.t. the aerial image rather than on cross-view matching. Fig. 6 shows a visualization of the features learned by the model in this setting.</p>
+<figure class="fig narrow"><img src="../../assets/img/vismetcvgl23-results-featurevis.webp" width="780" height="794" alt="Aerial-only feature visualization" loading="lazy"></figure>
+<p>We use a Kalman tracking framework to filter the uncertainty-aware predictions of the model and inertial measurements over time. In this setting, we outperform a recent lidar-visual metric CVGL method on KITTI-360 and achieve sub-meter accurate poses. We include two videos of the tracking framework applied to scenes in the Ford AV and KITTI-360 datasets below.</p>
+<!-- Click-to-play: nothing is requested from YouTube until the visitor asks. -->
+<div class="videos">
+<button class="ytlite" style="aspect-ratio: 384 / 582" data-id="JAo3Dh8wLcE" data-title="Tracking on the Ford AV dataset" aria-label="Play video: Tracking on the Ford AV dataset (loads from YouTube)"><img src="../../assets/img/yt-JAo3Dh8wLcE.webp" width="475" height="720" alt="" loading="lazy"><span class="ytlite-play" aria-hidden="true"></span></button>
+<button class="ytlite" style="aspect-ratio: 384 / 486" data-id="yTR3Wlu6Hdc" data-title="Tracking on the KITTI-360 dataset" aria-label="Play video: Tracking on the KITTI-360 dataset (loads from YouTube)"><img src="../../assets/img/yt-yTR3Wlu6Hdc.webp" width="284" height="360" alt="" loading="lazy"><span class="ytlite-play" aria-hidden="true"></span></button>
+</div>
+<p class="videos-note">Click to play — the video is then loaded from YouTube.</p>
+<h2 id="citation">Citation</h2>
+<pre><code>@InProceedings{Fervers_2023_CVPR,
+    author    = {Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
+    title     = {Uncertainty-Aware Vision-Based Metric Cross-View Geolocalization},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {21621-21631}
+}</code></pre></article>
+</main></div>
+    <script>
+(function () {
+  const targets = [...document.querySelectorAll(".toc a[href^='#']")]
+    .map(a => ({ a: a, el: document.getElementById(a.getAttribute("href").slice(1)) }))
+    .filter(t => t.el);
+  if (!targets.length) return;
+  function spy() {
+    let cur = targets[0];
+    for (const t of targets) if (t.el.getBoundingClientRect().top <= 140) cur = t;
+    // the last entry can be too short to ever cross the line, so anchor to it
+    // once we reach the bottom of the page
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 8)
+      cur = targets[targets.length - 1];
+    targets.forEach(t => t.a.classList.remove("active"));
+    cur.a.classList.add("active");
+  }
+  addEventListener("scroll", spy, { passive: true });
+  addEventListener("resize", spy, { passive: true });
+  spy();
+})();
+
+// Swap a poster for the real player only once the visitor clicks it, so the
+// page makes no third-party request on load.
+document.addEventListener("click", function (e) {
+  const b = e.target.closest(".ytlite");
+  if (!b) return;
+  const f = document.createElement("iframe");
+  f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id +
+          "?autoplay=1&rel=0";
+  f.title = b.dataset.title || "Video";
+  f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; " +
+            "gyroscope; picture-in-picture";
+  f.allowFullscreen = true;
+  f.style.aspectRatio = b.style.aspectRatio;
+  b.replaceWith(f);
+});
+    </script>
+  </body>
+</html>

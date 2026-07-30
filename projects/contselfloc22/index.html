@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Florian Fervers | Continuous Self-Localization on Aerial Images Using Visual and Lidar Sensors</title>
+    <meta name="author" content="Florian Fervers" />
+    <meta name="description" content="Continuous Self-Localization on Aerial Images Using Visual and Lidar Sensors. Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen. IROS22." />
+    <link rel="canonical" href="https://fferflo.github.io/projects/contselfloc22/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>" />
+    <link rel="stylesheet" href="../../assets/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="side side--project">
+<a class="back" href="../../">← Home</a>
+<nav class="toc" aria-label="On this page">
+<a href="#abstract">Abstract</a>
+<a href="#method">Method</a>
+<a href="#results">Results</a>
+<a href="#citation">Citation</a>
+</nav>
+<nav class="social" aria-label="Elsewhere">
+<a href="mailto:%66%6C%6F%72%69%61%6E.%66%65%72%76%65%72%73@%69%6F%73%62.%66%72%61%75%6E%68%6F%66%65%72.%64%65" title="Email" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+<a href="https://scholar.google.com/citations?user=b3F_txgAAAAJ" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
+<a href="https://github.com/fferflo" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+<a href="https://www.linkedin.com/in/florian-fervers-754a9027b" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+</nav>
+<p class="copy">© 2026 Florian Fervers</p>
+</aside>
+<main class="content" id="main">
+<h1 class="ptitle">Continuous Self-Localization on Aerial Images Using Visual and Lidar Sensors</h1>
+<p class="byline">Florian Fervers, Sebastian Bullinger, Christoph Bodensteiner, Michael Arens, Rainer Stiefelhagen</p>
+<p class="pvenue">IROS22</p>
+<article><p class="btns"><a class="btn" href="https://arxiv.org/abs/2203.03334" target="_blank" rel="noopener noreferrer">Paper</a><a class="btn" href="https://www.youtube.com/watch?v=4H-d2gHNcm0" target="_blank" rel="noopener noreferrer">Video</a></p>
+<p class="tldr"><em>tl;dr Perform metric self-localization by matching a vehicle’s lidar and camera readings against aerial imagery.</em></p>
+<figure class="fig narrow"><video src="../../assets/img/contselfloc22-demo.mp4" poster="../../assets/img/contselfloc22-demo-poster.webp" width="400" height="400" autoplay loop muted playsinline preload="metadata"></video><figcaption>Maps data: Google ©2022 Stadt Karlsruhe VLW, GeoBasis-DE/BKG (©2009)</figcaption></figure>
+<h2 id="abstract">Abstract</h2>
+<p>This paper proposes a novel method for geo-tracking, i.e. continuous metric self-localization in outdoor environments by registering a vehicle’s sensor information with aerial imagery of an unseen target region. Geo-tracking methods offer the potential to supplant noisy signals from global navigation satellite systems (GNSS) and expensive and hard to maintain prior maps that are typically used for this purpose. The proposed geo-tracking method aligns data from on-board cameras and lidar sensors with geo-registered orthophotos to continuously localize a vehicle. We train a model in a metric learning setting to extract visual features from ground and aerial images. The ground features are projected into a top-down perspective via the lidar points and are matched with the aerial features to determine the relative pose between vehicle and orthophoto.</p>
+<p>Our method is the first to utilize on-board cameras in an end-to-end differentiable model for metric self-localization on unseen orthophotos. It exhibits strong generalization, is robust to changes in the environment and requires only geo-poses as ground truth. We evaluate our approach on the KITTI-360 dataset and achieve a mean absolute position error (APE) of 0.94m. We further compare with previous approaches on the KITTI odometry dataset and achieve state-of-the-art results on the geo-tracking task.</p>
+<h2 id="method">Method</h2>
+<h3 id="1-alignment">1. Alignment</h3>
+<figure class="fig"><img src="../../assets/img/contselfloc22-summary.webp" width="1197" height="855" alt="Method summary" loading="lazy"></figure>
+<h3 id="2-tracking">2. Tracking</h3>
+<p>We choose a simple tracking method based on an Extended Kalman Filter (EKF) with the constant turn-rate and acceleration (CTRA) motion model that continuously integrates measurements of an inertial measurement unit (IMU). The EKF keeps track of the current vehicle state and corresponding state uncertainty. To demonstrate the effectiveness of our registration, we use only the turn-rate and acceleration of the IMU which on its own results in large long-term drift. The acceleration term is integrated twice to produce position values, such that small acceleration noise leads to large translational noise over time. We use our registration method to continuously align the trajectory with aerial images such that the drift is reduced to within the registration error of the method.</p>
+<h2 id="results">Results</h2>
+<p>We achieve state-of-the-art results on both the KITTI and KITTI-360 datasets. The KITTI dataset contains only a single front-facing camera and can thus not leverage the full potential of our method. We still evaluate on KITTI since it is the dataset that most related works reported on. We achieve better results than other approaches, but our method fails to track two scenes due to the limited field-of-view. KITTI-360 includes a front-facing camera and two side-facing cameras and is captured over different trajectories than KITTI. Here, we successfully track all scenes and achieve sub-meter accuracy.</p>
+<figure class="fig"><img src="../../assets/img/contselfloc22-results-quantitative.webp" width="1400" height="532" alt="Quantitative results" loading="lazy"></figure>
+<figure class="fig narrow"><img src="../../assets/img/contselfloc22-results-qualitative.webp" width="592" height="770" alt="Qualitative results" loading="lazy"></figure>
+<h2 id="citation">Citation</h2>
+<pre><code>@inproceedings{fervers2022continuous,
+  title={Continuous self-localization on aerial images using visual and lidar sensors},
+  author={Fervers, Florian and Bullinger, Sebastian and Bodensteiner, Christoph and Arens, Michael and Stiefelhagen, Rainer},
+  booktitle={2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={7028--7035},
+  year={2022},
+  organization={IEEE}
+}</code></pre></article>
+</main></div>
+    <script>
+(function () {
+  const targets = [...document.querySelectorAll(".toc a[href^='#']")]
+    .map(a => ({ a: a, el: document.getElementById(a.getAttribute("href").slice(1)) }))
+    .filter(t => t.el);
+  if (!targets.length) return;
+  function spy() {
+    let cur = targets[0];
+    for (const t of targets) if (t.el.getBoundingClientRect().top <= 140) cur = t;
+    // the last entry can be too short to ever cross the line, so anchor to it
+    // once we reach the bottom of the page
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 8)
+      cur = targets[targets.length - 1];
+    targets.forEach(t => t.a.classList.remove("active"));
+    cur.a.classList.add("active");
+  }
+  addEventListener("scroll", spy, { passive: true });
+  addEventListener("resize", spy, { passive: true });
+  spy();
+})();
+    </script>
+  </body>
+</html>
